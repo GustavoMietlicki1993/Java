@@ -1,15 +1,13 @@
 package com.codificando.associacao;
 
-public class Professor {
-	private String nome;
-	private int matricula;
-	private Materia[] materias;
-	private Aluno[] alunos;
+public class Professor extends Aluno {
+
+	private Materia materia;
+	private Aluno alunos[];
 	private Diretora diretora;
 
 	public Professor(String nome, int matricula) {
-		this.nome = nome;
-		this.matricula = matricula;
+
 	}
 
 	public Professor() {
@@ -17,36 +15,49 @@ public class Professor {
 	}
 
 	public void print() {
-		System.out.println("Nome do professor: " + nome + ". ");
-		System.out.println("Matricula do professor: " + matricula + ". ");
+		System.out.println("\n\n-----------------RELATORIO DE PROFESSORES-----------------\n\n");
+		System.out.println("Nome do professor: " + super.getNome() + ". ");
+		System.out.println("Matricula do professor: " + super.getMatricula() + ". ");
+		if (materia != null) {
+
+			System.out.println("Materia :" + materia.getTitulo());
+
+		} else {
+			System.out.println("Nenhuma materia cadastrada");
+		}
+		if (alunos != null && alunos.length != 0) {
+			for (Aluno aluno : alunos) {
+				System.out.println("Aluno: " + aluno.getNome());
+			}
+			return;
+		}
+
+		System.out.println("Diretora" + this.diretora.getNome());
 	}
 
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public int getMatricula() {
-		return matricula;
-	}
-
-	public void setMatricula(int matricula) {
-		this.matricula = matricula;
+	public Materia getMateria() {
+		return materia;
 	}
 
 	public void setMateria(Materia materia) {
+		this.materia = materia;
+	}
+
+	public Aluno[] getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(Aluno[] alunos) {
+		this.alunos = alunos;
 
 	}
 
-	public void setAluno(Aluno aluno) {
-
+	public Diretora getDiretora() {
+		return diretora;
 	}
 
-	public void setDiretor(Diretora diretora) {
-
+	public void setDiretora(Diretora diretora) {
+		this.diretora = diretora;
 	}
 
 }
